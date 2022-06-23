@@ -1,29 +1,50 @@
-﻿@{
-    ViewData["Title"] = "Editar Contato";
+﻿@model ContatoModel
+@{
+    ViewData["Title"] = "Editar Clientes";
 }
     
 <div class="container text-center">
-<h1 class="display-4">Editar Contatos</h1>
+<h1 class="display-4">Editar Clientes</h1>
 </div>
 
-<div class="container"> 
-    <form>
+<div class="container">
+    
+    <form asp-controller="Contato" asp-action="Alterar" method="post">
+
+        <input type="hidden" asp-for="Id"/>
+
   <div class="mb-3">
     <label for="nome" class="">Nome</label>
-    <input type="text" class="form-control" id="" aria-describedby="Seu Nome" placeholder="Digite o nome">    
+    <input type="text" asp-for="Nome" class="form-control" id="" aria-describedby="Nome" placeholder="Digite o nome"> 
+    @Html.ValidationMessageFor(x => x.Nome)
   </div>
 
   <div class="mb-3">
     <label for="email" class="">E-mail</label>
-    <input type="text" class="form-control" id="" aria-describedby="Seu E-mail" placeholder="Digite o E-mail">    
+    <input type="text" asp-for="Email" class="form-control" id="" aria-describedby="E-mail" placeholder="Digite o E-mail"> 
+    @Html.ValidationMessageFor(x => x.Email)
   </div>
 
   <div class="mb-3">
     <label for="celular" class="">Celular</label>
-    <input type="text" class="form-control" id="" aria-describedby="Seu E-mail" placeholder="Digite o Celular">    
+    <input type="text" asp-for="Celular" class="form-control" id="" aria-describedby="Celular" placeholder="Digite o Celular">
+    @Html.ValidationMessageFor(x => x.Celular)
+  </div>
+
+  <div class="mb-3">
+    <label for="oredenServico" class="">Serviço Prestado</label>
+    <input type="text" asp-for="Servico" class="form-control" id="" aria-describedby="Orden de Serviço" placeholder="Serviço Prestado">  
+    @Html.ValidationMessageFor(x => x.Servico)
+  </div>
+
+  <div class="mb-3">
+    <label for="servico" class="">Valor</label>
+    <input type="text" asp-for="Valor" class="form-control" id="" aria-describedby="Valor do Serviço" placeholder="Valor do Serviço">
+    @Html.ValidationMessageFor(x => x.Valor)
   </div>
   
   <button type="submit" class="btn btn-primary">Alterar</button>
   <a role="button" class="btn btn-secondary" asp-controller="Contato" asp-action="Index">Voltar</a>
+
 </form>
 </div>

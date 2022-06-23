@@ -1,7 +1,16 @@
+using CadastroContato.Models;
+using CadastroContato.Repositorios;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ContatoContext>
+    (options => options.UseSqlServer
+    ("Data Source = DESKTOP-UAD6I0B; Initial Catalog =Contatos; Integrated Security = True"));
+builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
 
 var app = builder.Build();
 
