@@ -37,7 +37,7 @@ namespace CadastroContato.Repositorios
                 contatoDb.Email = contato.Email;
                 contatoDb.Celular = contato.Celular;
                 contatoDb.Servico = contato.Servico;
-                contatoDb.Valor = contato.Valor;
+                contatoDb.Status = contato.Status;
 
                 _contatoContext.Contatos.Update(contatoDb);
                 _contatoContext.SaveChanges();

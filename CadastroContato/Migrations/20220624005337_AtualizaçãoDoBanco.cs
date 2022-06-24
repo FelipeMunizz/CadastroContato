@@ -4,7 +4,7 @@
 
 namespace CadastroContato.Migrations
 {
-    public partial class CriandoTabelaContato : Migration
+    public partial class AtualizaçãoDoBanco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,7 @@ namespace CadastroContato.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Celular = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Servico = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Valor = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

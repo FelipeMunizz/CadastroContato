@@ -34,8 +34,26 @@ namespace CadastroContato.Controllers
 
         public IActionResult Apagar(int id)
         {
-            _contatoRepositorio.Apagar(id);
-            return RedirectToAction("Index");
+            try
+            {
+               bool apagado = _contatoRepositorio.Apagar(id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Cliente Deletado Com Sucesso";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Não foi possivel deletar o contato";
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Não foi possivel deletar o contato, detalhe do errro:{erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
@@ -62,11 +80,22 @@ namespace CadastroContato.Controllers
         [HttpPost]
         public IActionResult Alterar(ContatoModel contato)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _contatoRepositorio.Atualizar(contato);
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Atualizar(contato);
+                    TempData["MensagemSucesso"] = "Cliente Alterado com Sucesso";
+                    return RedirectToAction("Index");
+                }
+            }
+
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Não foi possivel atualizar o cliente, tente novamente, detalhe do errro:{erro.Message}";
                 return RedirectToAction("Index");
             }
+
             return View("Editar", contato);
         }
     }

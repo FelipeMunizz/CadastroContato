@@ -24,7 +24,7 @@ namespace CadastroContato.Models
         [Required(ErrorMessage = "Digite o Serviço")]        
         public string? Servico { get; set; }
 
-        [Required(ErrorMessage = "Digite o Valor")]
-        public string? Valor { get; set; }
+        [Required(ErrorMessage = "Digite o status do Serviço")]
+        public string? Status { get; set; }
     }
 }

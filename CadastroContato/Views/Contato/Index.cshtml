@@ -22,25 +22,19 @@
             @TempData["MensagemErro"]
         </div>
     }
-    <div class="alert alert-success alert1" role="alert">
-    <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">x</button>
-  A simple success alert—check it out!
-</div>
-<div class="alert alert-danger alert1" role="alert">
-    <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">x</button>
-  A simple danger alert—check it out!
-</div>
+    <br/>
+  
 
 <h1 class="display-4">Listagem de Cliente</h1>
-<table class="table table-striped">
+<table class="table table-striped" id="table-cliente">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">E-mail</th>
       <th scope="col">Celular</th>
-      <th scope="col">Ordem de Serviço</th>
-      <th scope="col">Serviço Prestado</th>
+      <th scope="col">Serviço</th>
+      <th scope="col">Status do Serviços</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -55,7 +49,7 @@
                         <td>@contato.Email</td>
                         <td>@contato.Celular</td>
                         <td>@contato.Servico</td>
-                        <td>@contato.Valor</td>
+                        <td>@contato.Status</td>
                           <td>
                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                 <a role="button" class="btn btn-primary" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="Editar">Editar</a>
