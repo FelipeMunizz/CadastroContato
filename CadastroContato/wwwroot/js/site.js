@@ -4,7 +4,12 @@
 // Write your JavaScript code.
 
 $(document).ready(function () {
-    $('#table-cliente').DataTable({
+    getDatatable('#table-cliente');
+    getDatatable('#table-usuario')
+});
+
+function getDatatable(id) {
+    $(id).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -32,7 +37,7 @@ $(document).ready(function () {
             }
         }
     });
-});
+}
 
 
 $('.close-alert').click(function () {

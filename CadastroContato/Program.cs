@@ -11,7 +11,7 @@ builder.Services.AddDbContext<ContatoContext>
     (options => options.UseSqlServer
     ("Data Source = DESKTOP-UAD6I0B; Initial Catalog =Contatos; Integrated Security = True"));
 builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
-
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

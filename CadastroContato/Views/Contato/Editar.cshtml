@@ -1,4 +1,5 @@
-﻿@model ContatoModel
+﻿@using CadastroContato.Enum
+@model ContatoModel
 @{
     ViewData["Title"] = "Editar Clientes";
 }
@@ -15,32 +16,35 @@
 
   <div class="mb-3">
     <label for="nome" class="">Nome</label>
-    <input type="text" asp-for="Nome" class="form-control" id="" aria-describedby="Nome" placeholder="Digite o nome"> 
+    <input type="text" asp-for="Nome" class="form-control" id="" aria-describedby="Nome" placeholder="Digite o nome">    
     @Html.ValidationMessageFor(x => x.Nome)
   </div>
 
   <div class="mb-3">
     <label for="email" class="">E-mail</label>
-    <input type="text" asp-for="Email" class="form-control" id="" aria-describedby="E-mail" placeholder="Digite o E-mail"> 
+    <input type="text" asp-for="Email" class="form-control" id="" aria-describedby="E-mail" placeholder="Digite o E-mail">    
     @Html.ValidationMessageFor(x => x.Email)
   </div>
 
   <div class="mb-3">
     <label for="celular" class="">Celular</label>
-    <input type="text" asp-for="Celular" class="form-control" id="" aria-describedby="Celular" placeholder="Digite o Celular">
+    <input type="text" asp-for="Celular" class="form-control" id="" aria-describedby="Celular" placeholder="Digite o Celular">    
     @Html.ValidationMessageFor(x => x.Celular)
   </div>
 
   <div class="mb-3">
-    <label for="oredenServico" class="">Serviço Prestado</label>
-    <input type="text" asp-for="Servico" class="form-control" id="" aria-describedby="Orden de Serviço" placeholder="Serviço Prestado">  
+    <label for="Servico" class="">Serviço</label>
+    <input type="text" asp-for="Servico" class="form-control" id="" aria-describedby="Serviço" placeholder="Serviço">    
     @Html.ValidationMessageFor(x => x.Servico)
   </div>
-
-  <div class="mb-3">
-    <label for="servico" class="">Status</label>
-    <input type="text" asp-for="Status" class="form-control" id="" aria-describedby="Status do Serviço" placeholder="Status do Serviço">
-    @Html.ValidationMessageFor(x => x.Status)
+    <br/>
+  <div class="mb-3">    
+    <select class="form-control">
+        <option value="0">Selecione</option>
+        <option value="@StatusEnum.Orcamento">Orçamento</option>
+        <option value="@StatusEnum.Executando">Executando</option>
+        <option value="@StatusEnum.Concluido">Concluído</option>
+    </select>
   </div>
   
   <button type="submit" class="btn btn-primary">Alterar</button>
