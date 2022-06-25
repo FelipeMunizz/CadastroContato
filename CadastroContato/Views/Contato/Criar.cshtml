@@ -35,14 +35,16 @@
     @Html.ValidationMessageFor(x => x.Servico)
   </div>
   <br/>
-  <div class="mb-3">    
-    <select class="form-control">
-        <option value="0">Status do Serviço</option>
-        <option value="@StatusEnum.Orcamento">Orçamento</option>
-        <option value="@StatusEnum.Executando">Executando</option>
-        <option value="@StatusEnum.Concluido">Concluído</option>
-    </select>
-  </div>
+<div class="form-group">
+        <label for="nome" class="form-label">Status</label>
+        <select asp-for="Status" class="form-control">
+            <option value="">Selecione</option>
+            <option value="@StatusEnum.Orcamento" >Orçamento</option>
+            <option value="@StatusEnum.Executando" >Executando</option>
+            <option value="@StatusEnum.Concluido" >Concluido</option>
+        </select>        
+        @Html.ValidationMessageFor(x => x.Status)
+</div>
   
   <button type="submit" class="btn btn-primary">Adicionar</button>
   <a role="button" class="btn btn-secondary" asp-controller="Contato" asp-action="Index">Voltar</a>

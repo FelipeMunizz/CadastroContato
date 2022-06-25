@@ -1,4 +1,5 @@
-﻿using CadastroContato.Models;
+﻿using CadastroContato.Data;
+using CadastroContato.Models;
 
 namespace CadastroContato.Repositorios
 {
@@ -30,20 +31,20 @@ namespace CadastroContato.Repositorios
 
         public UsuarioModel Atualizar(UsuarioModel usuario)
         {
-            UsuarioModel usuarioDb = ListarId(usuario.Id);
-            if (usuarioDb == null) throw new Exception("Houve um erro na atualização do usuário");
-            {
-                usuarioDb.Nome = usuario.Nome;
-                usuarioDb.Email = usuario.Email;
-                usuarioDb.Login = usuario.Login;
-                usuarioDb.Perfil = usuario.Perfil;
-                usuarioDb.DataAtualizacao = DateTime.Now;
+            UsuarioModel usuarioDB = ListarId(usuario.Id);
 
-                _contatoContext.Usuarios.Update(usuarioDb);
-                _contatoContext.SaveChanges();
+            if (usuarioDB == null) throw new Exception("Houve um erro na atualização do usuário!");
 
-                return usuarioDb;
-            }
+            usuarioDB.Nome = usuario.Nome;
+            usuarioDB.Email = usuario.Email;
+            usuarioDB.Login = usuario.Login;
+            usuarioDB.Perfil = usuario.Perfil;
+            usuarioDB.DataAtualizacao = DateTime.Now;
+
+            _contatoContext.Usuarios.Update(usuarioDB);
+            _contatoContext.SaveChanges();
+
+            return usuarioDB;
         }
 
         public bool Apagar(int id)

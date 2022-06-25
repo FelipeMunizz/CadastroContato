@@ -2,8 +2,8 @@
 {
     public enum StatusEnum
     {
-        Orcamento,
-        Executando,
-        Concluido,
+        Orcamento = 1,
+        Executando = 2,
+        Concluido = 3
     }
 }

@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CadastroContato.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace CadastroContato.Models
+namespace CadastroContato.Data
 {
     public class ContatoContext : DbContext
     {

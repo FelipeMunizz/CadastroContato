@@ -39,12 +39,13 @@
   </div>
     <br/>
   <div class="mb-3">    
-    <select class="form-control">
+    <select asp-for="Status" class="form-control">
         <option value="0">Selecione</option>
         <option value="@StatusEnum.Orcamento">Orçamento</option>
         <option value="@StatusEnum.Executando">Executando</option>
-        <option value="@StatusEnum.Concluido">Concluído</option>
+        <option value="@StatusEnum.Concluido">Concluído</option>        
     </select>
+    @Html.ValidationMessageFor(x => x.Status)
   </div>
   
   <button type="submit" class="btn btn-primary">Alterar</button>

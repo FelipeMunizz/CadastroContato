@@ -1,4 +1,5 @@
-﻿using CadastroContato.Models;
+﻿using CadastroContato.Data;
+using CadastroContato.Models;
 
 namespace CadastroContato.Repositorios
 {

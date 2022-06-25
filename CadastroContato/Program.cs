@@ -1,4 +1,4 @@
-using CadastroContato.Models;
+using CadastroContato.Data;
 using CadastroContato.Repositorios;
 using Microsoft.EntityFrameworkCore;
 
