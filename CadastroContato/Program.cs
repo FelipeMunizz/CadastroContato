@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ContatoContext>
     (options => options.UseSqlServer
-    ("Data Source=tcp:cadastrocontatodbserver.database.windows.net,1433;Initial Catalog=CadastroContato_db;User Id=@cadastrocontatodbserver;Password="));
+    ("Data Source=tcp:cadastrocontatodbserver.database.windows.net,1433;Initial Catalog=CadastroContato_db;User Id=femuniz;Password=5Alc1cha@"));
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
