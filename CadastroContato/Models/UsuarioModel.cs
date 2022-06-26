@@ -1,4 +1,5 @@
 ﻿using CadastroContato.Enum;
+using CadastroContato.Helper;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -32,7 +33,12 @@ namespace CadastroContato.Models
 
         public bool SenhaValida(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.GerarRash();
+        }
+
+        public void SetSenhaHash()
+        {
+            Senha = Senha.GerarRash();
         }
     }
 }

@@ -19,6 +19,8 @@ namespace CadastroContato.Repositorios
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
             //gravar no banco
+            usuario.DataCadastro = DateTime.Now;
+            usuario.SetSenhaHash();
             _contatoContext.Usuarios.Add(usuario);
             _contatoContext.SaveChanges();
             return usuario;
