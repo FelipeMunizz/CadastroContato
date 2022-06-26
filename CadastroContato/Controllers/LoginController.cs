@@ -1,4 +1,5 @@
-﻿using CadastroContato.Models;
+﻿using CadastroContato.Helper;
+using CadastroContato.Models;
 using CadastroContato.Repositorios;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,14 +8,25 @@ namespace CadastroContato.Controllers
     public class LoginController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
-        public LoginController(IUsuarioRepositorio usuarioRepositorio)
+        private readonly ISessao _sessao;
+
+        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
         {
             _usuarioRepositorio = usuarioRepositorio;
+            _sessao = sessao;
         }
 
         public IActionResult Index()
         {
+            // Se o Usuario estiver logado, redirecionar para a Home
+            if(_sessao.BuscarSessaoDoUsuario()!= null) return RedirectToAction("Index", "Home");
             return View();
+        }
+
+        public IActionResult Sair()
+        {
+            _sessao.RemoverSessaoDoUsuario();
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]
@@ -30,12 +42,16 @@ namespace CadastroContato.Controllers
                     {
                         if (usuario.SenhaValida(loginModel.Senha))
                         {
+                            _sessao.CriarSessaoDoUsuario(usuario);
                             return RedirectToAction("Index", "Home");
                         }
+
                         TempData["MensagemErro"] = $"Senha Invalida";
                     }
+
                     TempData["MensagemErro"] = $"Usuario Invalido";
                 }
+
                 return View("Index");
             }
             
