@@ -1,9 +1,11 @@
-﻿using CadastroContato.Models;
+﻿using CadastroContato.Filters;
+using CadastroContato.Models;
 using CadastroContato.Repositorios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CadastroContato.Controllers
 {
+    [PaginaRestritaSomenteAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;

@@ -46,10 +46,10 @@ namespace CadastroContato.Controllers
                             return RedirectToAction("Index", "Home");
                         }
 
-                        TempData["MensagemErro"] = $"Senha Invalida";
+                        TempData["MensagemErro"] = $"Senha do usuário é inválida.";
                     }
 
-                    TempData["MensagemErro"] = $"Usuario Invalido";
+                    TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s).";
                 }
 
                 return View("Index");
