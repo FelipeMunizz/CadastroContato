@@ -8,22 +8,16 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CadastroContato.styles.css" asp-append-version="true" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
- 
+
 
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo9tec.png" width="40px" alt="Icon NIneTec"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>               
-            </div>
-        </nav>
+        <div class="d-flex justify-content-center title-system">
+            <h1 class="display-4">Sistema Cadastro de Clientes</h1>
+        </div>
     </header>
-    <div class="container">
+    <div class="container d-flex justify-content-center login">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
