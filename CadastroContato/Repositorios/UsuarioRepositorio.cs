@@ -28,6 +28,10 @@ namespace CadastroContato.Repositorios
         {
             return _contatoContext.Usuarios.FirstOrDefault(x => x.Id == id);
         }
+        public UsuarioModel BuscarPorLogin(string login)
+        {
+            return _contatoContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+        }
 
         public UsuarioModel Atualizar(UsuarioModel usuario)
         {
@@ -55,5 +59,7 @@ namespace CadastroContato.Repositorios
             _contatoContext.SaveChanges();
             return true;
         }
+
+
     }
 }
