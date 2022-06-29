@@ -27,5 +27,8 @@ namespace CadastroContato.Models
 
         [Required(ErrorMessage = "Selecione o Status do Serviço")]
         public StatusEnum Status {get; set;}
+
+        public DateTime DataCadastro { get; set; }
+        public DateTime? DataAtualizacao { get; set; }
     }
 }
