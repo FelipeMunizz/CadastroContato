@@ -41,6 +41,11 @@ namespace CadastroContato.Models
             Senha = Senha.GerarRash();
         }
 
+        public void SetNovaSenha(string novaSenha)
+        {
+            Senha = novaSenha.GerarRash();
+        }
+
         public string GerarNovaSenha()
         {
             string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);

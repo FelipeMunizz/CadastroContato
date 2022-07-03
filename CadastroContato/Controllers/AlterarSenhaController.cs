@@ -1,10 +1,21 @@
-﻿using CadastroContato.Models;
+﻿using CadastroContato.Helper;
+using CadastroContato.Models;
+using CadastroContato.Repositorios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CadastroContato.Controllers
 {
     public class AlterarSenhaController : Controller
     {
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly ISessao _sessao;
+
+        public AlterarSenhaController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
+        {
+            _usuarioRepositorio = usuarioRepositorio;
+            _sessao = sessao;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -15,9 +26,13 @@ namespace CadastroContato.Controllers
         {
             try
             {
+                UsuarioModel usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+                alterarSenhaModel.Id = usuarioLogado.Id;
+
                 if (ModelState.IsValid)
                 {
-                    TempData["MensagemSucesso"] = "Senha Alterada com sucesso!";
+                    _usuarioRepositorio.AlterarSenha(alterarSenhaModel);
+                    TempData["MensagemSucesso"] = "Senha Alterada com sucesso!";                    
                     return View("Index", alterarSenhaModel);
                 }
                 return View("Index", alterarSenhaModel);
